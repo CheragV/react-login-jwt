@@ -1,7 +1,19 @@
 import React, { useState } from 'react';
 import { Create, Login} from './components';
 import './resources/styles/App.scss';
-import { findAllInRenderedTree } from 'react-dom/test-utils';
+import { fromValidation } from './utils/validations';
+
+
+function onClickHandler(e) { 
+  e.preventDefault();
+  let form = e.target.form;
+  let isFromValid = fromValidation(form);
+  debugger
+  if (fromValidation(form)) { 
+    alert ('Form is valid')
+  }
+}
+
 
 function App() {
 
@@ -28,7 +40,7 @@ function App() {
           
         {tab === 'create' ? <Create /> : <Login />}
         
-        <button type="submit" form={tab} value="Submit">
+        <button type="submit" form={tab} value="Submit" onClick={(e) => onClickHandler(e)}>
           Submit
         </button>
         
