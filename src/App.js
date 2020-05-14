@@ -1,24 +1,39 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import { Create, Login} from './components';
+import './resources/styles/App.scss';
+import { findAllInRenderedTree } from 'react-dom/test-utils';
 
 function App() {
+
+  const [tab, setTab] = useState('create');
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+
+      <div className="login-container">
+
+        <div className="login-options">
+          <div onClick={() => setTab('create')} className={`tab ${tab === 'create' ? 'set-background-primary' : ''}`}>
+            <h4>
+              Create Account
+            </h4>
+          </div>
+
+          <div onClick={() => setTab('login')} className={`tab ${tab === 'login' ? 'set-background-primary' : ''}`}>
+            <h4>
+              Login
+            </h4>
+          </div>
+        </div>
+          
+        {tab === 'create' ? <Create /> : <Login />}
+        
+        <button type="submit" form={tab} value="Submit">
+          Submit
+        </button>
+        
+      </div>
+
     </div>
   );
 }

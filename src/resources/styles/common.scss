@@ -1,0 +1,42 @@
+
+$default-padding: 16px;
+$default-margin: 16px;
+$black: #000;
+$border-radius : 8px;
+
+$primaryColor: rgb(240, 230, 179);
+
+$box-shadow: 0 0.5rem 1rem rgba($black, 0.15) !default;
+
+// @mixin flexCenter(){
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+// }
+
+.flex-center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.set-background-primary {
+    background-color: $primaryColor;
+}
+.set-primary {
+    color: $primaryColor
+}
+
+
+@font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../fonts/roboto-v20-latin-regular.eot'); /* IE9 Compat Modes */
+    src: local('Roboto'), local('Roboto-Regular'),
+         url('../fonts/roboto-v20-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('../fonts/roboto-v20-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+         url('../fonts/roboto-v20-latin-regular.woff') format('woff'), /* Modern Browsers */
+         url('../fonts/roboto-v20-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+         url('../fonts/roboto-v20-latin-regular.svg#Roboto') format('svg'); /* Legacy iOS */
+  }

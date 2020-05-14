@@ -1,0 +1,67 @@
+@import './common';
+@import './input';
+
+
+/* roboto-regular - latin */
+
+.app {
+    @extend .flex-center;
+
+    font-family: 'Roboto';
+    height: 100vh;
+}
+
+.login-container {
+    border: 2px solid #777777;
+    padding: $default-padding;
+    box-shadow: $box-shadow;
+    border-radius: $border-radius * 3;
+    text-align: center;
+    border-radius: 4px;
+    // height: 50vh;
+    @extend .flex-center;
+    flex-direction: column;
+    justify-content: space-between;
+
+    button {
+        background-color: $primaryColor;
+        padding: $default-padding;
+        font-size: 16px;
+        font-weight: bold;
+        width: 60%;
+        border: 2px solid #333333;
+        border-radius: $border-radius * 3;
+    }
+}
+
+.login-options {
+    @extend .flex-center;
+
+    border: 2px solid #777777;
+    border-radius: $border-radius;
+    height: 40px;
+    margin-left: $default-margin;
+    margin-right: $default-margin;
+    overflow: hidden;
+    cursor: pointer;
+
+    h4 {
+        @extend .flex-center;
+        flex: 1;
+    }
+
+    .tab {
+        padding: $default-padding;
+        flex: 1;
+        width: 70%;
+    }
+}
+
+
+
+
+
+
+
+
+
