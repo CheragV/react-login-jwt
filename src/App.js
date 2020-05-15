@@ -7,8 +7,6 @@ import { fromValidation } from './utils/validations';
 function onClickHandler(e) { 
   e.preventDefault();
   let form = e.target.form;
-  let isFromValid = fromValidation(form);
-  debugger
   if (fromValidation(form)) { 
     alert ('Form is valid')
   }

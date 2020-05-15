@@ -2,11 +2,19 @@
   "name": "react-login-jwt",
   "version": "0.1.0",
   "private": true,
+  "main": "server/index.js",
   "dependencies": {
+    "@hapi/joi": "^17.1.1",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
+    "bcrypt": "^4.0.1",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mongodb": "^3.5.7",
+    "mongoose": "^5.9.14",
     "node-sass": "^4.14.1",
+    "nodemon": "^2.0.3",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1",
@@ -14,7 +22,7 @@
     "webpack-cli": "3.3.11"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "react-scripts start && nodemon main",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
