@@ -42,7 +42,7 @@ async function createUser(userData) {
 }
 
 
-module.exports = {
+export {
   loginUser,
   createUser
  }
