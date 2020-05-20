@@ -2,20 +2,49 @@ import React, { useState } from 'react';
 import { Create, Login} from './components';
 import './resources/styles/App.scss';
 import { fromValidation } from './utils/validations';
+import { loginUser, createUser } from './utils/ApiService';
 
 
-function onClickHandler(e) { 
+async function onClickHandler(e, setUser) { 
   e.preventDefault();
   let form = e.target.form;
-  if (fromValidation(form)) { 
-    alert ('Form is valid')
+  if (fromValidation(form)) {
+    switch (e.target.form.id) {
+      case 'create':
+        let userData = {
+          name: form.querySelector('#username').value,
+          email: form.querySelector('#email').value,
+          password: form.querySelector('#password').value
+        }
+        let User = await createUser(userData);
+        if (User && User._id) {
+          setUser(User);
+        }
+        break;
+      
+      case 'login': {
+        let userData = {
+          email: form.querySelector('#email').value,
+          password: form.querySelector('#password').value
+        }
+        let User = await loginUser(userData);
+        if (User && User._id) {
+          setUser(User);
+        }
+      }
+        break;
+    
+      default:
+        console.log('None')
+    }
   }
 }
 
 
 function App() {
-
   const [tab, setTab] = useState('create');
+  const [user, setUser] = useState({});
+
 
   return (
     <div className="app">
@@ -38,11 +67,23 @@ function App() {
           
         {tab === 'create' ? <Create /> : <Login />}
         
-        <button type="submit" form={tab} value="Submit" onClick={(e) => onClickHandler(e)}>
+        <button type="submit" form={tab} value="Submit" onClick={(e) => onClickHandler(e, setUser)}>
           Submit
         </button>
         
       </div>
+
+      {
+        user._id ? (
+          <div>
+            {
+              Object.keys(user).map(item => (
+                <p>{`${item}: \t ${user[item]}`}</p>
+              ))
+            }
+          </div>
+        ) : null
+      }
 
     </div>
   );

@@ -9,10 +9,10 @@
 
     font-family: 'Roboto';
     height: 100vh;
+    flex-direction: column;
 }
 
 .login-container {
-    border: 2px solid #777777;
     padding: $default-padding;
     box-shadow: $box-shadow;
     border-radius: $border-radius * 3;
