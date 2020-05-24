@@ -1,0 +1,52 @@
+@import '../common.scss';
+
+.home{
+    margin: 0;
+    padding: 0;
+
+    .home-cover {
+        height: 300px; 
+        width: 100%;
+        @extend .flex-center;
+
+        .bg-image {
+            height: inherit;
+            width: inherit;
+            object-fit: cover;
+            top:0;
+            filter: blur(8px);
+            z-index: -1;
+            position: absolute;
+        }
+
+        .bg-text {
+            @extend .flex-center;
+
+            height: inherit;
+            width: inherit;
+            height: inherit;
+            width: inherit;
+            color: white;
+            font-size: 36px;
+
+            p{
+                border: 4px white solid;
+                padding: 30px 50px;
+                border-radius: 8px;
+            }
+        }
+    }
+    
+
+
+}
+
+.post-form {
+    display: flex;
+    flex-direction: column;
+    
+
+    .label {
+        margin-top: 30px;
+    }
+}

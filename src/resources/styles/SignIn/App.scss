@@ -1,4 +1,4 @@
-@import './common';
+@import '../common';
 @import './input';
 
 
@@ -18,10 +18,24 @@
     border-radius: $border-radius * 3;
     text-align: center;
     border-radius: 4px;
-    // height: 50vh;
-    @extend .flex-center;
     flex-direction: column;
     justify-content: space-between;
+    width: 26vw;
+    min-width: 400px;
+    position: absolute;
+    top: 30vh;
+    left: 37vw;
+    animation: translateX .7s ease-in-out;
+
+    @keyframes translateX {
+        0% {
+            transform: translate(-20vw, 0);    
+        }
+        100% {
+            transform: translate(0, 0);
+        }
+    }
+
 
     button {
         background-color: $primaryColor;

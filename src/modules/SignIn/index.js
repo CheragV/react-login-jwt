@@ -1,14 +1,23 @@
 import React, { useState } from 'react';
-import { Create, Login } from '../../components';
+
 import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux';
-import { fromValidation } from '../../utils/validations';
-import { loginUser, createUser } from '../../utils/UserService';
+import { useHistory } from "react-router-dom";
 
-async function onClickHandler(e, setUser) { 
+import { Create, Login } from '../../components';
+import { validations } from 'utils';
+import { loginUser, createUser } from '../../utils/UserService';
+import { setUser } from './actions'
+
+import '../../resources/styles/SignIn/App.scss';
+import '../../resources/styles/SignIn/input.scss';
+
+
+async function onClickHandler(e, setUser, history) { 
   e.preventDefault();
+  
   let form = e.target.form;
-  if (fromValidation(form)) {
+  if (validations.fromValidation(form)) {
     switch (e.target.form.id) {
       case 'create':
         let userData = {
@@ -19,6 +28,7 @@ async function onClickHandler(e, setUser) {
         let User = await createUser(userData);
         if (User && User._id) {
           setUser(User);
+          history.push('/home')
         }
         break;
       
@@ -30,6 +40,7 @@ async function onClickHandler(e, setUser) {
         let User = await loginUser(userData);
         if (User && User._id) {
           setUser(User);
+          history.push('/home')
         }
       }
         break;
@@ -43,8 +54,8 @@ async function onClickHandler(e, setUser) {
 
 function SignIn(props) {
   const [tab, setTab] = useState('login');
-  const [user, setUser] = useState({});
-  console.log('Props',props);
+  const history = useHistory();
+  const { setUser } = props;
 
   return (
     <div>
@@ -67,23 +78,11 @@ function SignIn(props) {
           
         {tab === 'create' ? <Create /> : <Login />}
         
-        <button type="submit" form={tab} value="Submit" onClick={(e) => onClickHandler(e, setUser)}>
+        <button type="submit" form={tab} value="Submit" onClick={(e) => onClickHandler(e, setUser, history)}>
           Submit
         </button>
         
       </div>
-
-      {
-        user._id ? (
-          <div>
-            {
-              Object.keys(user).map(item => (
-                <p>{`${item}: \t ${user[item]}`}</p>
-              ))
-            }
-          </div>
-        ) : null
-      }
 
     </div>
   );
@@ -92,19 +91,13 @@ function SignIn(props) {
 
 const mapStateToProps = (state) => {
   return {
-      bills: state.reducer.get('bills').toJS(),
-      loading: state.reducer.get('loading')
+      ...state.userReducer.toJS()
   }
 }
 
 const mapDispatchToProps = dispatch => bindActionCreators(
   {
-    // fetchData
-    // fetchDataLoading,
-    // fetchDataSuccess,
-    // addBill,
-    // editBill,
-    // deleteBill
+    setUser
   },
   dispatch
 )

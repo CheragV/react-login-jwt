@@ -1,6 +1,7 @@
-import { FETCH_DATA_LOADING, FETCH_DATA_LOADING_SUCCESS, SET_BILL } from '../Constants';
+import {  } from '../Constants';
 import { combineReducers } from 'redux';
-import userReducer from './userReducer';
+import userReducer from '../../modules/SignIn/userReducer';
+import homeReducer from '../../modules/Home/homeReducer';
 const { fromJS } = require('immutable');
 
 export const initialState = fromJS({
@@ -10,14 +11,6 @@ export const initialState = fromJS({
 
 export const reducer = (state = initialState,action) => {
     switch(action.type) {
-        case FETCH_DATA_LOADING_SUCCESS:
-            return state.set('bills', fromJS(action.data));
-        
-        case FETCH_DATA_LOADING:
-            return state.set('loading', action.status);
-        
-        case SET_BILL:
-            return state.set('bills', fromJS(action.data));
         
         default:
             return state;
@@ -26,7 +19,8 @@ export const reducer = (state = initialState,action) => {
 
 export const rootReducer = combineReducers({
     reducer,
-    userReducer
+    userReducer,
+    homeReducer
 });
 
 export default rootReducer;

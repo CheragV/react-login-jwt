@@ -5,6 +5,7 @@
   "private": true,
   "main": "server/index.js",
   "dependencies": {
+    "@babel/plugin-transform-runtime": "^7.9.6",
     "@hapi/joi": "^17.1.1",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
@@ -13,8 +14,10 @@
     "bcrypt": "^4.0.1",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "file-loader": "^6.0.0",
     "gh-pages": "^2.2.0",
     "immutable": "^4.0.0-rc.12",
+    "json-loader": "^0.5.7",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.9.14",
     "node-sass": "^4.14.1",
@@ -26,14 +29,15 @@
     "react-scripts": "3.4.1",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
-    "webpack": "4.42.0",
+    "sass": "^1.26.5",
+    "sass-loader": "^8.0.2",
     "webpack-cli": "3.3.11"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "build": "webpack --progress --colors",
+    "start": "webpack-dev-server --progress --colors",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -59,9 +63,12 @@
     "@babel/preset-env": "^7.9.6",
     "@babel/preset-react": "^7.9.4",
     "babel-loader": "^8.1.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
     "css-loader": "^3.5.3",
     "html-webpack-plugin": "^4.3.0",
+    "mini-css-extract-plugin": "^0.9.0",
     "style-loader": "^1.2.1",
+    "webpack": "^4.43.0",
     "webpack-dev-server": "3.10.3"
   }
 }
